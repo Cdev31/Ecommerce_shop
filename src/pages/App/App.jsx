@@ -1,17 +1,18 @@
 import {BrowserRouter} from 'react-router-dom'
 
 //import components
-import {AppRouter} from '../router'
-import {GlobalProvider} from '../context'
+
+import {GlobalProvider} from '../../context'
 
 import './App.css'
+import { AppUi } from './AppUI'
 
 function App() {
-  
+
   return (
   <GlobalProvider>
      <BrowserRouter>
-     <AppRouter/>
+       <AppUi/>
      </BrowserRouter>
   </GlobalProvider>
   )

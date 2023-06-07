@@ -1,9 +1,11 @@
 import {createPortal} from 'react-dom'
 
-const NavModal = ()=>{
+export const NavModal = ({children})=>{
     return createPortal(
-        document.getElementById('vertical-nav',
-        {children}
+        <div>
+            {children}
+        </div>,
+        document.getElementById('vertical-nav'
         )
     )
 }

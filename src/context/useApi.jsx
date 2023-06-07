@@ -12,8 +12,8 @@ export const useApi = ()=>{
         .then(res => res.json())
         .then(data => setItems(data))
     }, [])
-    
 
+    
     return {items}
 
 }

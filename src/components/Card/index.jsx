@@ -1,5 +1,7 @@
-export const Card = (props)=>{  
+import {Link} from 'react-router-dom'
 
+
+export const Card = (props)=>{  
     const colorCategory = (category)=>{
         if(category === 'Shoes'){
             return 'bg-purple-600'
@@ -13,6 +15,7 @@ export const Card = (props)=>{
     }
 
     return (
+        <Link to={`/Details/${props.info.id}`}>
         <div className='w-52 cursor-pointer rounded-lg flex flex-col gap-1 hover:scale-[1.05] transition-transform duration-500 '>
             <figure className='relative z-10' >
                 <span className={`${colorCategory(props.info.category)} pl-1 pr-1 absolute text-white font-medium rounded-lg`}>{props.info.category}</span>
@@ -26,5 +29,6 @@ export const Card = (props)=>{
                 </p>
             </div>
         </div>
+        </Link>
     )
 }

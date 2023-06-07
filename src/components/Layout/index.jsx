@@ -1,29 +1,16 @@
-import {useState} from 'react'
+import {useContext} from 'react'
 //import components
 import {Navbar} from '../Navbar'
-import {VerticalNavbar} from '../VerticalNavbar'
 import {Footer} from '../Footer'
+import { contextProduct } from '../../context'
 
 export const Layout = ({children})=>{
-    const [openMenu,setOpenMenu] = useState(false)
-
-    const open = ()=>{
-        setOpenMenu(true)
-    }
-
-    const close = ()=>{
-        setOpenMenu(false)
-    }
-
+    const context = useContext(contextProduct)
     return (
         <div className="grid grid-cols-5  grid-rows-[100px] auto-rows-min">
             <Navbar
-            open={open}
-            close={close}
-            />
-            <VerticalNavbar
-            openNav={openMenu}
-            close={close}
+            open={context.open}
+            close={context.close}
             />
             {children}
             <Footer/>

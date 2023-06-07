@@ -7,7 +7,7 @@ import {DetailProduct} from '../pages/DetailProduct'
 export const AppRouter = ()=>{
     let routes = useRoutes([
         {path:'/', element: <Home/>},
-        {path:'/Details', element: <DetailProduct/>},
+        {path:'/Details/:id', element: <DetailProduct/>},
         {path:'/Electronic', element:<Home/>},
         {path:'/shoes', element:<Home/>},
         {path:'/clothes', element:<Home/>},
