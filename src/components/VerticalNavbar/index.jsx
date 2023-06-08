@@ -5,21 +5,16 @@ import {useContext, useState} from 'react'
 import {contextProduct} from '../../context/'
 
 export const VerticalNavbar = ()=>{
-    const [openCategory,setOpenCategory] = useState(false)
-
     const context = useContext(contextProduct)
     const activeStyle = 'bg-black rounded-lg p-1 text-white'
     
     return (
             <nav className='fixed bg-white row-start-2 border-r h-full border-black w-60 col-start-1 col-end-2 top-0 z-20 '>
-            <XCircleIcon onClick={()=>context.close()} className='h-7 w-8 absolute right-0 z-20 text-white cursor-pointer'/>
-            <div className='relative w-full h-8 bg-black'></div>
-            <div onClick={()=>{setOpenCategory(true)}}>Categories</div>
-               {
-                openCategory && (     
-                    <ul className='flex flex-col gap-5 ml-4 pt-2'>
-                        <ArrowSmallLeftIcon onClick={()=>setOpenCategory(false)} className=' h-6 font-bold cursor-pointer mr-auto'/>
-                    <li className='font-bold text-lg cursor-pointer'>
+            <XCircleIcon onClick={()=>context.close()} className='h-8 w-8 pt-1 absolute right-0 z-20 text-white cursor-pointer'/>
+            <div className='relative w-full h-10 bg-black/90'></div>
+            <li className='text-xl font-bold pl-2 pt-1 cursor-pointer hover:text-blue-950' onClick={()=>{setOpenCategory(true)}}>Categories</li>   
+                <ul className='flex flex-col gap-5 ml-12 pt-2 list-disc'>
+                    <li className='font-bold text-lg cursor-pointer hover:text-blue-950'>
                         <NavLink
                         className={({ isActive }) =>
                         isActive ? activeStyle : undefined
@@ -28,7 +23,7 @@ export const VerticalNavbar = ()=>{
                             Clothes
                         </NavLink>
                     </li>
-                    <li className='font-bold text-lg cursor-pointer'>
+                    <li className='font-bold text-lg cursor-pointer hover:text-blue-950'>
                         <NavLink
                         className={({ isActive }) =>
                         isActive ? activeStyle : undefined
@@ -37,7 +32,7 @@ export const VerticalNavbar = ()=>{
                             Electronic
                         </NavLink>
                     </li>
-                    <li className='font-bold text-lg cursor-pointer'>
+                    <li className='font-bold text-lg cursor-pointer hover:text-blue-950'>
                         <NavLink 
                         className={({ isActive }) =>
                         isActive ? activeStyle : undefined
@@ -46,7 +41,7 @@ export const VerticalNavbar = ()=>{
                             Shoes
                         </NavLink>
                     </li>
-                    <li className='font-bold text-lg cursor-pointer'>
+                    <li className='font-bold text-lg cursor-pointer hover:text-blue-950'>
                         <NavLink 
                         className={({ isActive }) =>
                         isActive ? activeStyle : undefined
@@ -56,8 +51,6 @@ export const VerticalNavbar = ()=>{
                         </NavLink>
                     </li>
                 </ul>
-                )
-               }
        </nav>    
     )
 }

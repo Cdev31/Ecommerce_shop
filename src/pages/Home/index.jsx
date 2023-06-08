@@ -12,7 +12,7 @@ export const Home = ()=>{
             <main className='row-start-2 col-start-2 col-end-6 flex flex-row flex-wrap gap-6'>
                 <div
                 className='flex flex-col items-center'>
-                <h2 className='border-[4px] pl-11 border-red-600 rounded-full w-56 font-bold text-[1.5rem] text-red-600 mr-[8rem] mb-5 mt-5 bg-white'>Electronics</h2>
+                <h2 className='border-[4px] pl-11 border-red-900 rounded-full w-56 font-bold text-[1.5rem] text-red-900 mr-[8rem] mb-5 mt-5 bg-white'>Electronics</h2>
                 <div className='flex flex-wrap gap-6'>
                 {
                    context.products.map((e)=>{
@@ -29,7 +29,7 @@ export const Home = ()=>{
                 </div>
                 </div>
                 <div className='flex flex-col items-center'>
-                <h2 className='border-[4px] pl-[4rem] border-purple-600 rounded-full w-56 font-bold text-[1.5rem] text-purple-600 mr-[8rem] mb-5 mt-5 bg-white'>Shoes</h2>
+                <h2 className='border-[4px] pl-[4rem] border-cyan-900 rounded-full w-56 font-bold text-[1.5rem] text-cyan-900 mr-[8rem] mb-5 mt-5 bg-white'>Shoes</h2>
                 <div className='flex flex-wrap gap-6'>
                 {
                    context.products.map((e)=>{
@@ -46,7 +46,7 @@ export const Home = ()=>{
                 </div>
                 </div>
                 <div className='flex flex-col items-center'>
-                <h2 className='border-[4px] pl-[4rem] border-green-600 rounded-full w-56 font-bold text-[1.5rem] text-green-600 mr-[8rem] mb-5 mt-5 bg-white'>Clothes</h2>
+                <h2 className='border-[4px] pl-[4rem] border-green-900 rounded-full w-56 font-bold text-[1.5rem] text-green-900 mr-[8rem] mb-5 mt-5 bg-white'>Clothes</h2>
                 <div className='flex flex-wrap gap-6'>
                 {
                    context.products.map((e)=>{

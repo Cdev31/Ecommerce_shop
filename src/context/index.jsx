@@ -34,6 +34,21 @@ export const GlobalProvider = ({children})=>{
     const closeLog =()=>{
         setOpenLogin(false)
     }
+
+    //cambiar color de navbar por categoria
+    const [category,setCategory] = useState('bg-black')
+
+    const changeColor = (category)=>{
+        if(category == 'Electronic'){
+            setCategory({categoryColor: 'bg-red-950', border: 'border-red-950'})
+        }
+        if(category == 'Shoes'){
+            setCategory({categoryColor: 'bg-cyan-950', border: 'border-cyan-950'})
+        }
+        if(category == 'Clothes'){
+            setCategory({categoryColor: 'bg-green-950', border: 'border-green-950'})
+        }
+    }
     return (
         <contextProduct.Provider
         value={{
@@ -44,7 +59,9 @@ export const GlobalProvider = ({children})=>{
             findOneProduct,
             openLog,
             closeLog,
-            openLogin
+            openLogin,
+            changeColor,
+            category
         }}
         >
             {children}

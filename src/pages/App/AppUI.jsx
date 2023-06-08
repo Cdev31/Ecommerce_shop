@@ -18,13 +18,14 @@ export const AppUi = ()=>{
             )
            }
         </NavModal>
-        <LoginModal>
-            {
-                openLogin && (
-                    <LoginForm/>
+        {
+            openLogin && (
+                <LoginModal>
+                    <LoginForm/>        
+                </LoginModal>
                 )
-            }
-        </LoginModal>
+        }
+        
         <AppRouter />
         </>
     )

@@ -1,4 +1,4 @@
-import {NavLink} from 'react-router-dom'
+import {NavLink, useLocation} from 'react-router-dom'
 import {ShoppingBagIcon,HomeIcon,Bars3Icon} from '@heroicons/react/24/solid'
 import {SechProduct} from '../../components/SerchProdut'
 import { useContext } from 'react'
@@ -6,14 +6,15 @@ import { contextProduct } from '../../context'
 
 export const Navbar = ({open})=>{
     const context = useContext(contextProduct)
+
     return (
-        <nav className='w-full h-10 bg-white col-start-1 col-end-6 fixed z-20 '>
-          <ul className='flex flex-col bg-white gap-2 border-b border-black/50 text-black'>
+        <nav className='w-full h-10 col-start-1 col-end-6 fixed z-20'>
+          <ul className={`${useLocation().pathname === '/' ? 'bg-black/90': context.category.categoryColor } flex flex-col gap-2 border-b text-white`}>
            
             <div className='flex flex-row gap-2 pr-2 justify-between'> 
                     <li className='flex'> 
                         <NavLink to='/'>
-                            <HomeIcon className='h-9 w-10 pt-1 pl-1 text-black/90'/>
+                            <HomeIcon className='h-9 w-10 pt-1 pl-1 text-white/90'/>
                         </NavLink>
                     </li>
                     <li className='w-[400px]'>
@@ -21,13 +22,13 @@ export const Navbar = ({open})=>{
                     </li>
                     <li>
                         <NavLink to='/'>
-                            <ShoppingBagIcon className='w-8 h-9 pt-1 text-black'/>
+                            <ShoppingBagIcon className='w-8 h-9 pt-1 text-white'/>
                         </NavLink>
                     </li>
                 </div>
 
                 <ul className='flex'>
-                   <span onClick={()=>open()} className='flex items-center cursor-pointer border border-black/50 mb-1 ml-1 mr-1'>
+                   <span onClick={()=>open()} className='flex items-center cursor-pointer border border-white mb-1 ml-1 mr-1'>
                        <Bars3Icon className='h-8 w-8 mb-1 pt-1 ml-1 cursor-pointer'/>
                        <p className='font-medium text-lg mb-1 pt-1 pr-2 '>Todo</p>
                    </span>
@@ -53,12 +54,12 @@ export const Navbar = ({open})=>{
                         </li>
                         <li 
                         onClick={()=>context.openLog()}
-                        className='mt-[2px] h-8 rounded-lg w-28 font-medium text-xl bg-black text-white text-center hover:scale-[1.02]'>
+                        className='mt-[2px] h-8 rounded-lg w-28 font-medium text-xl bg-white text-black text-center hover:scale-[1.02]'>
                             <NavLink to='/'>
                                 Login
                             </NavLink>
                         </li>
-                        <li className='mt-[2px] h-8  rounded-lg w-28 font-medium text-xl bg-black text-white text-center hover:scale-[1.02]'>
+                        <li className='mt-[2px] h-8  rounded-lg w-28 font-medium text-xl bg-white text-black text-center hover:scale-[1.02]'>
                             <NavLink to='/'>
                                 Sigin
                             </NavLink>

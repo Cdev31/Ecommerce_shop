@@ -10,6 +10,7 @@ export const DetailProduct = ()=>{
     const context = useContext(contextProduct)
     const product = context.findOneProduct(useLocation().pathname.slice(9))
 
+   
     return (
         <Layout>
             <main className='flex flex-row gap-2 row-start-2 col-start-1 col-end-6 h-full'>          
@@ -60,19 +61,27 @@ export const DetailProduct = ()=>{
                             placeat provident cumque modi? Optio magni ipsum, alias veritatis quos nulla laborum!</p>
                     </div>
                 </div>
-                <div className='flex flex-col gap-5 border border-black/50 h-[325px] w-60 ml-auto mr-12 mt-5 rounded-lg'>
-                    <p className='pl-1 text-sm'>$US<span className='text-xl font-bold'>{product[0].price}</span></p>
-                    <p className='m-1'>US${product[0].price} de envio y deposito por el producto a detalle de importacion</p>
-                    <h2 className='m-1'>Disponible</h2>
-                    <div className='flex'>
-                        <span className='h-6 w-6 bg-blue-600 pl-1  text-xl text-white'>+</span>
-                        <span>0</span>
-                        <span className='h-6 w-6 bg-red-600 pl-1  text-xl text-white'>-</span>
+                <div className={`flex flex-col gap-5 border ${context.category.border} h-[450px] w-60 ml-auto mr-12 mt-5 rounded-lg items-center`}>
+                    <p className='font-medium flex justify-center mr-3 mt-1' >
+                        <span className='text-sm'>$US</span>
+                        <span className='text-[1.8rem] font-bold pt-0'>{product[0].price}</span>
+                    </p>
+                    <p className='ml-1 text-sl font-medium'>US${product[0].price} de envio mas deposito de dereho de importacion</p>
+                    <p className='ml-1 mr-1 text-sm font-medium'>Entrega el 14 de julio a las 16:45 p.m</p>
+                    <div className='flex flex-col gap-2 mr-auto ml-1'>
+                        <span className='text-lg font-medium'>Disponible</span>
+                        <select className='ml-1 rounded-lg w-[5rem] font-bold text-sm border-b cursor-pointer border-black/50'>
+                        {Array.from({ length: product[0].stock }, (_, index) => (
+                                <option className='font-bold' key={index}>{index + 1}</option>
+                            ))}
+                        </select>
                     </div>
-                    <button className='rounded-lg bg-orange-600 text-white h-8 w-40 ml-10'>Agregar al carrito</button>
-                   <p>Enviado por Amazon</p>
-                   <p>Vendido por Amazon</p>
-                   <p>Devoluciones con: </p>
+                    <button className={`${context.category.categoryColor} font-bold h-8 w-[10rem] rounded-lg text-white hover:scale-[1.02]`}>anadir al carrito</button>
+                    <div className='flex flex-col ml-1 font-medium gap-1'>
+                        <p className='flex'><span>Vendido por: </span><span className='ml-[3rem] text-sm'>Amazon</span></p>
+                        <p className='flex'><span>Entrega: </span><span className='ml-[5rem] text-sm'>Amazon</span></p>
+                        <p className='flex'><span>Devoluciones: </span><span className='ml-10 text-sm'>Con oficinas de amazon</span></p>
+                    </div>
                 </div>
             </main>
         </Layout>

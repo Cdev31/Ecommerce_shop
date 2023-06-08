@@ -1,22 +1,27 @@
+import { useContext } from 'react'
 import {Link} from 'react-router-dom'
+import { contextProduct } from '../../context'
 
 
 export const Card = (props)=>{  
+    const context = useContext(contextProduct)
     const colorCategory = (category)=>{
         if(category === 'Shoes'){
-            return 'bg-purple-600'
+            return 'bg-cyan-900'
         }
         else if(category === 'Electronic'){
-            return 'bg-red-600'
+            return 'bg-red-900'
         }
         else if(category === 'Clothes'){
-            return 'bg-green-600'
+            return 'bg-green-900'
         }
     }
 
     return (
         <Link to={`/Details/${props.info.id}`}>
-        <div className='w-52 cursor-pointer rounded-lg flex flex-col gap-1 hover:scale-[1.05] transition-transform duration-500 '>
+        <div 
+        onClick={()=>context.changeColor(props.info.category)}
+        className='w-52 cursor-pointer rounded-lg flex flex-col gap-1 hover:scale-[1.05] transition-transform duration-500 '>
             <figure className='relative z-10' >
                 <span className={`${colorCategory(props.info.category)} pl-1 pr-1 absolute text-white font-medium rounded-lg`}>{props.info.category}</span>
                 <img className='rounded-lg h-36 w-full' src={props.info.images_products[0]} />
