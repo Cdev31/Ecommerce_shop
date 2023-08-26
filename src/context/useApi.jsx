@@ -6,6 +6,7 @@ export const useApi = ()=>{
 
     //all products
     const [items,setItems] = useState([])
+    const [item,setItem] = useState({})
 
     useEffect(()=>{
         fetch(`${url}/Product`)
@@ -13,7 +14,15 @@ export const useApi = ()=>{
         .then(data => setItems(data))
     }, [])
 
+   const findOneProduct = (id)=>{
+    useEffect(()=>{
+        fetch(`${url}/Product/${id}`)
+        .then(res => res.json())
+        .then(data => setItem(data.response))
+    }, [id])
+   }
+
     
-    return {items}
+    return {items,item,findOneProduct}
 
 }

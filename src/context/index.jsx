@@ -6,7 +6,7 @@ import {useApi} from './useApi'
 export const contextProduct = createContext()
 
 export const GlobalProvider = ({children})=>{
-    const {items:products} = useApi()
+    const {items:products,item:product,findOneProduct} = useApi()
 
     //abrir menu vertical
     const [openMenu,setOpenMenu] = useState(false)
@@ -19,11 +19,7 @@ export const GlobalProvider = ({children})=>{
         setOpenMenu(false)
     }
 
-    //buscar un solo producto por id
-    const findOneProduct = (id)=>{
-        return products.filter((e)=>e.id === id)
-    }
-
+    
     //abrir loginform
     const [openLogin,setOpenLogin] = useState(false)
 
@@ -60,6 +56,7 @@ export const GlobalProvider = ({children})=>{
             openLog,
             closeLog,
             openLogin,
+            product,
             changeColor,
             category
         }}
