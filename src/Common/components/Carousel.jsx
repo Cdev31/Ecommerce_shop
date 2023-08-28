@@ -32,7 +32,6 @@ export const Carousel  = ()=>{
                 <img src="/assets/pc_1.jpg" className={`${activePhoto === 2 ? 'w-[600px] h-96 flex flex-grow ': ''}`} />
                 <img src="/assets/camisa_1.jpg" className="w-0 h-96  hidden" />
                 <img src="/assets/pc_2.jpg" className="w-0 h-96 hidden" />
-               
                 </div>
                <ChevronRightIcon onClick={onNext} className="w-10 h-full cursor-pointer"/>
         </div>

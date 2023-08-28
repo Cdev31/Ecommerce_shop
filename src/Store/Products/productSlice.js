@@ -5,17 +5,7 @@ export const productSlice = createSlice({
    name: 'product',
 
    initialState: {
-      products: [{
-         id: null,
-         title: null,
-         description: null,
-         category: null,
-         stock: null,
-         price: null,
-         labels: [],
-         images: [],
-         expiration: null
-      }]
+      products: [],
    },
 
    reducers: {
@@ -25,12 +15,9 @@ export const productSlice = createSlice({
 
       addNewProduct:(state, { payload } )=>{
         state.products.push( payload  )
-      //   state.labels.push( payload.labels )
-      //   state.images.push( payload.images )
-       
       },
       getProductById: ( state, action )=>{
-
+         state.products = state.products.filter( product => product.id === action.payload.id  )
       },
       updateProducts: ( state, action )=>{
 
