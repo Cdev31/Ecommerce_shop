@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 import { ShoppingBagIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { MapPinIcon } from '@heroicons/react/24/outline'
 import { Searcher } from "./Searcher"
-import { LogoIcon } from "../../../icons/LogoIcon"
+import {ReactComponent as Logo } from '../../../icons/logo.svg'
 
 export const Navbar = ()=>{
     return (
@@ -10,7 +10,7 @@ export const Navbar = ()=>{
         <ul className="flex flex-row gap-2 h-14  bg-theme  text-white font-bold">
             <li className="basis-1/12 mb-8">
                 <NavLink to="/">
-                   <LogoIcon/>
+                  <Logo className="relative bottom-7 z-[1] cursor-pointer" fill="white"/>
                 </NavLink>
             </li>
             <div className="flex cursor-pointer mt-1">
@@ -26,13 +26,13 @@ export const Navbar = ()=>{
 
             <div className="flex flex-row gap-2 basis-1/4">
                 <li className="flex text-xl m-2">
-                    <NavLink className="border-white border-2 pl-2 pr-2 pt-1" to='/'>
+                    <NavLink className="border-white border-2 pl-2 pr-2 pt-1" to='/Login'>
                         LogIn
                     </NavLink>
                 </li>
 
                 <li className="flex text-xl m-2 ">
-                    <NavLink className="border-white border-2 pl-2 pr-2 pt-1" to='/'>
+                    <NavLink className="border-white border-2 pl-2 pr-2 pt-1" to='/SigIn'>
                         SigIn
                     </NavLink>
                 </li>
