@@ -1,18 +1,18 @@
 import { Layout } from "../../Common/Layout/Layout"
+import { OptionsProduct } from "../Components/OptionsProduct"
 import { UserCard } from "../Components/UserCard"
-import { UserOptions } from "../Components/UserOptions"
 
 import { OfertProductCard } from '../../Products/Components/ProductDetails/OfertProductCard'
 
 export const UserProfilePage =()=>{
     return(
         <Layout>
-            <main className="flex flex-col">
-            <section className="flex m-1 gap-2">
-                    <UserOptions/>
+            <main className="flex flex-col gap-5 m-2">
+                <section className="w-full flex gap-10">
                     <UserCard/>
-            </section>
-            <OfertProductCard/>
+                    <OptionsProduct/>
+                </section>
+                <OfertProductCard/>
             </main>
         </Layout>
     )    
