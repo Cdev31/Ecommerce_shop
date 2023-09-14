@@ -18,7 +18,7 @@ export const OptionsProduct = ()=>{
             onClick={onChangeUrl}
             className="flex gap-1 rounded-xl p-1 cursor-pointer border-2 border-theme text-theme">
                 <ShoppingBagIcon className='h-6'/>
-                <span>Productos</span>
+                <span>Crear un producto</span>
                 <EllipsisHorizontalIcon className='h-6'/>
             </p>
             <p className="flex gap-1 rounded-xl p-1 cursor-pointer border-2 border-theme text-theme">

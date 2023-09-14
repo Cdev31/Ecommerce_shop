@@ -1,10 +1,14 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, useLocation, useNavigate } from "react-router-dom"
 import { ShoppingBagIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import { MapPinIcon } from '@heroicons/react/24/outline'
 import { Searcher } from "./Searcher"
 import {ReactComponent as Logo } from '../../../icons/logo.svg'
+import { useSelector } from "react-redux"
 
 export const Navbar = ()=>{
+    const { status, email , photoURL, uuid } = useSelector( state => state.auth)
+    
+
     return (
         <>
         <ul className="flex flex-row gap-2 h-14  bg-theme  text-white font-bold">
@@ -25,17 +29,29 @@ export const Navbar = ()=>{
             </div>
 
             <div className="flex flex-row gap-2 basis-1/4">
-                <li className="flex text-xl m-2">
+                {
+                    status === 'authenticated' ?
+                    <div className="flex flex-row gap-1 self-center bg-white m-1 p-1 h-10 rounded-3xl">
+                        <img src={photoURL} className="h-7 self-center rounded-full "/>
+                        <NavLink 
+                        to={`/User/profile/${uuid}`}
+                        className="font-bold text-theme self-center text-base" >
+                            {email}
+                        </NavLink>
+                    </div> :<>
+                    <li className="flex text-xl m-2">
                     <NavLink className="border-white border-2 pl-2 pr-2 pt-1" to='/Login'>
                         LogIn
                     </NavLink>
-                </li>
+                    </li>
 
-                <li className="flex text-xl m-2 ">
-                    <NavLink className="border-white border-2 pl-2 pr-2 pt-1" to='/SigIn'>
-                        SigIn
-                    </NavLink>
-                </li>
+                    <li className="flex text-xl m-2 ">
+                        <NavLink className="border-white border-2 pl-2 pr-2 pt-1" to='/SigIn'>
+                            SigIn
+                        </NavLink>
+                    </li>
+                    </>
+                }
             </div>
             <li className="flex mr-3 cursor-pointer basis-1 mt-1">
                 <ShoppingBagIcon className="w-10 h-10 "/>

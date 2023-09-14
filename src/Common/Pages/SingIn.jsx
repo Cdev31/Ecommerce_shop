@@ -2,9 +2,8 @@ import { NavLink, Link } from "react-router-dom"
 import {ReactComponent as Logo } from '../../icons/logo.svg'
 
 
-
-
 export const SigInPage = ()=>{
+  
     return (
         <main className="flex justify-center">
             <div className="flex flex-col gap-2 pt-2">

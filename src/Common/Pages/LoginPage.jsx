@@ -1,8 +1,28 @@
-import { NavLink, Link } from "react-router-dom"
+import { NavLink, Link, useNavigate } from "react-router-dom"
 import {ReactComponent as Logo } from '../../icons/logo.svg'
+import { useDispatch, useSelector } from "react-redux"
+import { startGoogleSignIn } from "../../store/auth/thunks"
+import { useEffect } from "react"
 
 
 export const LoginPage = ()=>{
+    const { status, errorMessage } = useSelector( state => state.auth )
+    const dispatch = useDispatch()
+
+    const navigate = useNavigate()
+
+    const onGoogleSignIn = ()=>{
+        dispatch( startGoogleSignIn() )
+    }
+
+    useEffect(()=>{
+        if( status === 'authenticated'){
+            navigate({
+                pathname: '/'
+            })
+        }
+    }, [ status ])
+
     return (
         <main className="flex justify-center">
             <div className="flex flex-col gap-2 pt-10">
@@ -20,7 +40,9 @@ export const LoginPage = ()=>{
                     type="password" placeholder="password"/>
                 </form>
                 <button className="bg-theme text-white rounded-lg font-bold h-10 text-xl">Login</button>    
-                <button className="bg-blue-500 rounded-lg h-10 text-white"> Google</button>
+                <button
+                onClick={onGoogleSignIn}
+                className="bg-blue-500 rounded-lg h-10 text-white"> Google</button>
                 <section>
                     <p className="flex flex-col">
                         <span className="font-bold text-sm">Aun no tienes una cuenta?</span>
