@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { CameraIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { v4 as uuid} from 'uuid'
+import { useDispatch, useSelector } from "react-redux"
+import { createProduct } from "../../../store/product/thunks"
 
 const categoies = [
     "Cleaning",
@@ -9,8 +11,11 @@ const categoies = [
 ]
 
 export const ProductForm = ()=>{
-
+    const { created } = useSelector( state => state.product )
+    const dispatch = useDispatch()
+    
     const [image, setImage] = useState([])
+    const [product, setProduct] = useState({})
    
     const onChangeImageUrl = (event)=>{
         if( image.length === 4) event.target.disabled = true;
@@ -30,11 +35,23 @@ export const ProductForm = ()=>{
         setImage(newImages)
     }
 
+    const onInputChange = ({ target }) =>{
+        setProduct({
+            ...product,
+            [target.name]: target.value
+        })
+    }
 
-   
+    const onCreate = ()=>{
+        dispatch( createProduct( product ) )
+    }
+
+    const onSubmit = (event) =>{
+        event.preventDefault()
+    }
 
     return (
-        <form className="flex flex-row gap-1">
+        <form onSubmit={onSubmit} className="flex flex-row gap-1">
             <figure className="flex pl-1 flex-row gap-2 flex-wrap max-w-[22rem] ">
                 {
                     image.map((image)=>{
@@ -65,16 +82,25 @@ export const ProductForm = ()=>{
                
                 <div className="flex gap-1 basis-1/2">
                     <label className="font-bold text-theme">Price:</label>
-                    <input className="focus:outline-none w-10 border-b-2 border-theme" required type="number"/>
+                    <input
+                    name="price"
+                    onBlur={onInputChange}
+                    className="focus:outline-none w-10 border-b-2 border-theme" required type="number"/>
                 </div>
                 <div className="flex gap-1 basis-1/2">
                     <label className="font-bold text-theme">Stock:</label>
-                    <input className="focus:outline-none w-10 border-b-2 border-theme" required type="number"/>
+                    <input
+                    name="stock"
+                    onBlur={onInputChange}
+                    className="focus:outline-none w-10 border-b-2 border-theme" required type="number"/>
                 </div>
            </section>
            <div className="flex gap-1">
                 <label className="font-bold text-theme">Description:</label>
-                <textarea className="p-1 border-b-2 border-theme focus:outline-none" placeholder="description"/>
+                <textarea
+                name="description"
+                onBlur={onInputChange}
+                className="p-1 border-b-2 border-theme focus:outline-none" placeholder="description"/>
             </div>
             <select className="flex focus:outline-none text-theme border-2 border-theme bg-white rounded-xl">
                 {
@@ -88,6 +114,9 @@ export const ProductForm = ()=>{
                 }
             </select>
         </section>
+        <button
+         onClick={onCreate}
+         className="border-2 border-theme rounded-xl p-1 text-theme font-medium max-h-10 self-center cursor-pointer">Add</button>
     </form>
     )
 }

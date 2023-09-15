@@ -1,5 +1,8 @@
 import { MapPinIcon, StarIcon } from '@heroicons/react/24/outline'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { readProducts } from '../../../store/product/thunks'
 
 const images = [
     'dell_1.jpg',
@@ -15,7 +18,14 @@ const images = [
 
 export const ProductCard = ()=>{
     const navigate = useNavigate()
+    const { products } = useSelector( state => state.product )
+    const dispatch = useDispatch()
 
+    useEffect(()=>{
+        dispatch( readProducts() )
+    }, [])
+
+    console.log(products)    
     const onChangeDetails = ()=>{
         navigate({
             pathname: '/products/details/' + 1
@@ -29,19 +39,19 @@ export const ProductCard = ()=>{
             className="flex gap-5 pl-2 cursor-pointer">
                 <figure className="flex flex-col gap-2 justify-center">
                     {
-                        images.map((image,i)=>{
-                            const imageName = `/public/assets/${image}`
+                        products.map((image,i)=>{
+                            // const imageName = `/public/assets/${image}`
                             return (
                                 <div 
                                
                                 key={i}
                                 className="flex">
-                                    <img 
+                                    {/* <img 
                                     src={imageName} alt={image} 
                                     className="w-52 h-52"
-                                    />
+                                    /> */}
                                     <article className="ml-2 flex flex-col gap-2">
-                                        <h2 className='text-xl'>ASUS Prime B550-PLUS AMD AM4 Zen 3 Ryzen 5000 & 3rd Gen Ryzen ATX Motherboard (PCIe 4.0, ECC Memory, 1Gb LAN, HDMI 2.1, DisPlayPort 1.2 (4K@60HZ), Addressable Gen 2 RGB Header and Aura Sync)</h2>
+                                        <h2 className='text-xl'>{products[i].description}</h2>
                                         <div className='flex flex-col gap-1'>
                                             
                                             <div className='flex'>
