@@ -21,7 +21,8 @@ export const ProductForm = ()=>{
         if( image.length === 4) event.target.disabled = true;
         const images = {
             id: uuid(),
-            imageUrl:window.URL.createObjectURL(event.target.files[0])  
+            imageUrl:window.URL.createObjectURL(event.target.files[0]),
+            file: event.target.files[0]
         }
         const newImages = [
             ...image,
@@ -38,6 +39,7 @@ export const ProductForm = ()=>{
     const onInputChange = ({ target }) =>{
         setProduct({
             ...product,
+            file: image,
             [target.name]: target.value
         })
     }
@@ -49,6 +51,7 @@ export const ProductForm = ()=>{
     const onSubmit = (event) =>{
         event.preventDefault()
     }
+    console.log(product)
 
     return (
         <form onSubmit={onSubmit} className="flex flex-row gap-1">

@@ -39,17 +39,18 @@ export const ProductCard = ()=>{
             className="flex gap-5 pl-2 cursor-pointer">
                 <figure className="flex flex-col gap-2 justify-center">
                     {
-                        products.map((image,i)=>{
-                            // const imageName = `/public/assets/${image}`
+                        products.map((product,i)=>{
+                            const imageName = product.images[0]
+                            console.log(product)
                             return (
                                 <div 
                                
                                 key={i}
                                 className="flex">
-                                    {/* <img 
-                                    src={imageName} alt={image} 
+                                    <img 
+                                    src={imageName} 
                                     className="w-52 h-52"
-                                    /> */}
+                                    />
                                     <article className="ml-2 flex flex-col gap-2">
                                         <h2 className='text-xl'>{products[i].description}</h2>
                                         <div className='flex flex-col gap-1'>
@@ -62,7 +63,7 @@ export const ProductCard = ()=>{
                                             <span className='text-sm font-bold'>+4</span>
                                             </div>
                                             <p className='flex'>
-                                                <span className='text-2xl font-medium'>$499</span>
+                                                <span className='text-2xl font-medium'>$ {product.price}</span>
                                                 <span className='text-sm'>99</span>
                                             </p>
                                             <p className='flex flex-row'>
